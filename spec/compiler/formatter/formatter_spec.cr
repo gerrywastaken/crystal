@@ -856,4 +856,10 @@ describe Crystal::Formatter do
   assert_format "def foo\n  <<-FOO\n  foo \#{1}\n  FOO\nend"
 
   assert_format "@x : A(B | C)?"
+
+  assert_format "foo.as ( Int32* )", "foo.as(Int32*)"
+  assert_format "foo.as   Int32*", "foo.as Int32*"
+  assert_format "foo.as(T).bar"
+  assert_format "foo &.as(T)"
+  assert_format "foo &.bar.as(T)"
 end
